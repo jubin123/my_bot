@@ -1,7 +1,40 @@
-## Robot Package Template
+# `my_bot` package
 
-This is a GitHub template. You can make your own copy by clicking the green "Use this template" button.
+### Introduction
 
-It is recommended that you keep the repo/package name the same, but if you do change it, ensure you do a "Find all" using your IDE (or the built-in GitHub IDE by hitting the `.` key) and rename all instances of `my_bot` to whatever your project's name is.
+This is a ROS2 project of a two wheel robot with simulation in Gazebo. The project is build and tested for ROS_DISTRO `humble`.Can run in `foxy` after installing right package for foxy.You can verify your `ROS_DISTRO` and `ROS_VERSION` with below command (assuming you have sourced proper ROS underlay if You are having Different ROS installion)
 
-Note that each directory currently has at least one file in it to ensure that git tracks the files (and, consequently, that a fresh clone has direcctories present for CMake to find). These example files can be removed if required (and the directories can be removed if `CMakeLists.txt` is adjusted accordingly).
+    printenv | grep -i ROS
+
+### Setting up the project with dependency
+
+Open a terminal (should be in the home directory by default)
+
+    mkdir dev_ws/src
+    git clone https://github.com/jubin123/my_bot.git
+    cd ..
+    colcon build --symlink-install
+
+Install the required package and dependency.(note: change  `humble` to `foxy` to run in fROS_DISTRO foxy)
+
+    sudo apt install ros-humble-xacro ros-humble-joint-state-publisher-gui
+
+Installing Gazebo 
+
+    sudo apt install ros-humble-gazebo-ros-pkgs
+
+### Running simulation and controling the mobile robot
+
+To start the simulation in gazebo world.In terminal go to `~/dev_ws` and run below command
+
+    source install/setup.bash
+    ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/obstacles.world
+
+If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` and run below command
+
+    rviz2 -d src/my_bot/config/drive_bot.rviz
+
+To Test the control the robot with keyboard.
+
+    ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
