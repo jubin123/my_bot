@@ -15,7 +15,7 @@ Open a terminal (should be in the home directory by default)
     cd ..
     colcon build --symlink-install
 
-Install the required package and dependency.(note: change  `humble` to `foxy` to run in fROS_DISTRO foxy)
+Install the required package and dependency.(note: change  `humble` to `foxy` to run in ROS_DISTRO foxy)
 
     sudo apt install ros-humble-xacro ros-humble-joint-state-publisher-gui
 
@@ -30,11 +30,23 @@ To start the simulation in gazebo world.In terminal go to `~/dev_ws` and run bel
     source install/setup.bash
     ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/obstacles.world
 
+<!-- Reference-style-image:  -->
+![Gazebo Output][move_bot_lidar_gazebo]
+
+
 If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` and run below command
 
-    rviz2 -d src/my_bot/config/drive_bot.rviz
+    rviz2 -d src/my_bot/config/drive_bot_lidar.rviz
+
+<!-- Reference-style-image:  -->
+![Rviz2 Output][move_bot_lidar_rviz2]
 
 To Test the control the robot with keyboard.
 
     ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
+
+<!-- Image References:  -->
+[move_bot_lidar_gazebo]: resources/Images/move_bot_lidar_gazebo.png "Gazebo Output"
+
+[move_bot_lidar_rviz2]: resources/Images/move_bot_lidar_rviz2.png "Rviz2 Output"
