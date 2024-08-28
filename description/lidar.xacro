@@ -31,7 +31,8 @@
 
         <sensor name="laser" type="ray">
             <pose> 0 0 0 0 0 0 </pose>
-            <visualize>true</visualize>
+            <!-- To turn on lidar visualizer in Gazebro set `<visualize>true</visualize>` else `<visualize>false</visualize>` . -->
+            <visualize>false</visualize>
             <update_rate>10</update_rate>
             <ray>
                 <scan>

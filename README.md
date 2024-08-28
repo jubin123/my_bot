@@ -31,15 +31,15 @@ To start the simulation in gazebo world.In terminal go to `~/dev_ws` and run bel
     ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/obstacles.world
 
 <!-- Reference-style-image:  -->
-![Gazebo Output][move_bot_lidar_gazebo]
+![Gazebo Output][drive_bot_lidar_camera_gazebo]
 
 
 If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` and run below command
 
-    rviz2 -d src/my_bot/config/drive_bot_lidar.rviz
+    rviz2 -d src/my_bot/config/drive_bot_lidar_camera.rviz
 
 <!-- Reference-style-image:  -->
-![Rviz2 Output][move_bot_lidar_rviz2]
+![Rviz2 Output][drive_bot_lidar_camera_rviz2]
 
 To Test the control the robot with keyboard.
 
@@ -47,6 +47,10 @@ To Test the control the robot with keyboard.
 
 
 <!-- Image References:  -->
-[move_bot_lidar_gazebo]: resources/Images/move_bot_lidar_gazebo.png "Gazebo Output"
+[drive_bot_lidar_gazebo]: resources/Images/drive_bot_lidar_gazebo.png "Gazebo Output"
+[drive_bot_camera_gazebo]: resources/Images/drive_bot_camera_gazebo.png "Gazebo Output"
+[drive_bot_lidar_camera_gazebo]: resources/Images/drive_bot_lidar_camera_gazebo.png "Gazebo Output"
 
-[move_bot_lidar_rviz2]: resources/Images/move_bot_lidar_rviz2.png "Rviz2 Output"
+[drive_bot_lidar_rviz2]: resources/Images/drive_bot_lidar_rviz2.png "Rviz2 Output"
+[drive_bot_camera_rviz2]: resources/Images/drive_bot_camera_rviz2.png "Rviz2 Output"
+[drive_bot_lidar_camera_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2.png "Rviz2 Output"
