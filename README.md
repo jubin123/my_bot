@@ -23,6 +23,30 @@ Installing Gazebo
 
     sudo apt install ros-humble-gazebo-ros-pkgs
 
+### Setting up and adding dependency for rasperypi
+
+Camera used is `Pi Camera V2`.
+
+In terminal run 
+
+    sudo apt install libraspberrypi-bin v4l-utils ros-humble-v4l2-camera ros-humble-image-transport-plugins
+
+Also, use the `groups` command to confirm you are already in the `video` group (to allow camera access). If not, run `sudo usermod -aG video $USER` (this requires log out/restart to take effect).
+
+To check if it thinks the camera is connected .run 
+
+    vcgencmd get_camera
+
+and we should see `supported=1 detected=1` in response.
+
+We can run `raspistill -k` and the camera stream should come up on the screen, then press `x` and `Enter` to exit.
+
+Then, we can run:
+
+    v4l2-ctl --list-devices
+
+And there should be an entry for `mmal service`, platform `bcm2835-v4l2`, device `/dev/video0`. That tells us that the V4L2 subsystem can see the camera.
+
 ## Running simulation and controling the mobile robot
 
 To start the simulation in gazebo world.In terminal go to `~/dev_ws` and run below command
