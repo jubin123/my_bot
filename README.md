@@ -98,6 +98,20 @@ Then, to republish a topic we need to specify the type of the input, then the ty
 
 Note, with `image_transport`, `raw` means "uncompressed" and has nothing to do with the "raw" in `image_raw`.
 
+#### How to add `depth_camera` support : (Is not be used in current projects,might be intrigated in future)
+
+To see add depth camera . In `robot.urdf.xacro` ,comment `<xacro:include filename="camera.xacro" />` and uncomment `<xacro:include filename="depth_camera.xacro" />` shown below as requirement.
+
+<!-- Reference-style-image:  -->
+![Rviz2 Output][drive_bot_lidar_depth_camera_requirements]
+
+If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` and run below command
+
+    rviz2 -d src/my_bot/config/drive_bot_lidar_depth_camera.rviz
+
+<!-- Reference-style-image:  -->
+![Rviz2 Output][drive_bot_lidar_depth_camera_rviz2]
+
 <!-- Image References:  -->
 [drive_bot_lidar_gazebo]: resources/Images/drive_bot_lidar_gazebo.png "Gazebo Output"
 [drive_bot_camera_gazebo]: resources/Images/drive_bot_camera_gazebo.png "Gazebo Output"
@@ -106,3 +120,6 @@ Note, with `image_transport`, `raw` means "uncompressed" and has nothing to do w
 [drive_bot_lidar_rviz2]: resources/Images/drive_bot_lidar_rviz2.png "Rviz2 Output"
 [drive_bot_camera_rviz2]: resources/Images/drive_bot_camera_rviz2.png "Rviz2 Output"
 [drive_bot_lidar_camera_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2.png "Rviz2 Output"
+[drive_bot_lidar_depth_camera_rviz2]: resources/Images/drive_bot_lidar_depth_camera_rviz2.png "Rviz2 depth_camera Output"
+
+[drive_bot_lidar_depth_camera_requirements]: resources/Images/drive_bot_lidar_depth_camera_requirements.png "drive_bot_lidar_depth_camera_requirements"
