@@ -23,6 +23,10 @@ Installing Gazebo
 
     sudo apt install ros-humble-gazebo-ros-pkgs
 
+Installing ros2_control dependency
+
+    sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-gazebo-ros2-control
+
 ### Setting up and adding dependency for rasperypi
 
 Camera used is `Pi Camera V2`.
@@ -67,7 +71,7 @@ If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` a
 
 To Test the control the robot with keyboard.
 
-    ros2 run teleop_twist_keyboard teleop_twist_keyboard
+    ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
 
 
 ## Additional infomation :

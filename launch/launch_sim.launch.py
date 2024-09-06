@@ -37,6 +37,19 @@ def generate_launch_description():
                                    '-entity', 'my_bot'],
                         output='screen')
 
+    # Strat a controller with controller_names 'diff_cont' from 'my_controllers.yaml'.(differential drive controller)
+    diff_drive_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["diff_cont"],
+    )
+
+    # Strat a controller with controller_names 'joint_broad' from 'my_controllers.yaml'.(to broadcast joints states)
+    joint_broad_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_broad"],
+    )
 
 
     # Launch them all!
@@ -44,4 +57,6 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
+        diff_drive_spawner,
+        joint_broad_spawner
     ])
