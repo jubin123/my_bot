@@ -4,13 +4,22 @@
     <!-- Example link -->
     <!-- <link name="base_link"></link> -->
 
+    <!-- xacro srgument to toggle betweeen ros2 controller and gazebo controller -->
+    <xacro:arg name="use_ros2_control" default="true"/>
+
     <!-- included xacro file containing core urdf of robot -->
-    
     <xacro:include filename="robot_core.xacro" />
 
-    <xacro:include filename="ros2_control.xacro" />
 
-    <!-- <xacro:include filename="gazebo_control.xacro" /> -->
+    <xacro:if value="$(arg use_ros2_control)">
+        <!-- Using ros2 controller -->
+        <xacro:include filename="ros2_control.xacro" />
+    </xacro:if>
+    <xacro:unless value="$(arg use_ros2_control)">
+        <!-- Using Gazebo buildin controller -->
+        <xacro:include filename="gazebo_control.xacro" />
+    </xacro:unless>
+    
 
     <xacro:include filename="lidar.xacro" />
 
