@@ -51,6 +51,17 @@ Then, we can run:
 
 And there should be an entry for `mmal service`, platform `bcm2835-v4l2`, device `/dev/video0`. That tells us that the V4L2 subsystem can see the camera.
 
+To get serial depentency,In terminal run
+
+    sudo apt-get install libserial-dev
+
+In mobile robot add aditional repo and build
+
+    git clone https://github.com/jubin123/serial.git
+    git clone -b humble https://github.com/jubin123/diffdrive_arduino.git
+
+Change `humble` to `main` if using foxy ros distro.
+
 ## Running simulation and controling the mobile robot
 
 To start the simulation in gazebo world.In terminal go to `~/dev_ws` and run below command
