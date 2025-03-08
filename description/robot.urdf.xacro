@@ -7,6 +7,10 @@
     <!-- xacro srgument to toggle betweeen ros2 controller and gazebo controller -->
     <xacro:arg name="use_ros2_control" default="true"/>
 
+    <!-- xacro srgument to toggle betweeen gazebo simulation and Real robot -->
+    <xacro:arg name="sim_mode" default="false"/>
+
+
     <!-- included xacro file containing core urdf of robot -->
     <xacro:include filename="robot_core.xacro" />
 
