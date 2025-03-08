@@ -62,18 +62,27 @@ In mobile robot add aditional repo and build
 
 Change `humble` to `main` if using foxy ros distro.
 
-## Running simulation and controling the mobile robot
+## Controling the mobile robot (_Simulation_ or *Physical Robot*)
 
-To start the simulation in gazebo world.In terminal go to `~/dev_ws` and run below command
+Start running in either _physical robot_ mode or in _simulation_ mode
 
-    source install/setup.bash
-    ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/obstacles.world
+- To start the Physical Robot.In terminal go to `~/dev_ws` and run below command
+
+        source install/setup.bash
+        ros2 launch my_bot launch_robot.launch.py
+
+    **OR**
+
+- To start the simulation in gazebo world.In terminal go to `~/dev_ws` and run below command
+
+        source install/setup.bash
+        ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/obstacles.world
 
 <!-- Reference-style-image:  -->
 ![Gazebo Output][ros2_controller_main_gazebo]
 
 
-If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` and run below command
+If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` and run below command (_optional step_)
 
     rviz2 -d src/my_bot/config/main.rviz
 
