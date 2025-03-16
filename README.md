@@ -89,9 +89,18 @@ If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` a
 <!-- Reference-style-image:  -->
 ![Rviz2 Output][ros2_controller_main_rviz2]
 
-To Test the control the robot with keyboard.
+Robot (In _physical_ or _simulation_ mode) can be controled with either _Controller_  or with _keyboard_ .
 
-    ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
+- To use _controller_.In terminal run below command
+
+        source install/setup.bash
+        ros2 launch my_bot joystick.launch.py
+
+    **OR**
+
+- TTo use _keyboard_.In terminal go to `~/dev_ws` and run below command
+
+        ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
 
 
 ## Additional infomation :
@@ -135,6 +144,39 @@ If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` a
 
 <!-- Reference-style-image:  -->
 ![Rviz2 Output][drive_bot_lidar_depth_camera_rviz2]
+
+### Gamepads in Linux
+
+To check our gamepad works in Linux, we want to install some useful tools:
+
+    sudo apt install joystick jstest-gtk evtest
+
+We can test if the linux is seeing gamepad in 2 ways:
+
+1. Running `evtest` in terminal.(new driver)
+
+2. Experiment with `jstest` and its graphical counterpart `jstest-gtk`. (old driver)
+
+### Connecting to Joysticks/Gamepads in ROS
+
+To see all avaliable device:
+
+    ros2 run joy joy_enumerate_devices
+
+To get gamepad input in ros topic:
+
+    ros2 run joy joy_node # <-- Run in first terminal and it will provide controler's value in topic '/joy'.
+    ros2 topic echo /joy # <-- Run in second terminal and will display output
+
+If you want to get values in a GUI :
+
+Install package:
+
+    git clone https://github.com/jubin123/joy_tester.git
+
+Once installed, it can be run with 
+    
+    ros2 run joy_tester test_joy
 
 <!-- Image References:  -->
 [drive_bot_lidar_gazebo]: resources/Images/drive_bot_lidar_gazebo.png "Gazebo Output"
