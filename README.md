@@ -178,6 +178,12 @@ Once installed, it can be run with
     
     ros2 run joy_tester test_joy
 
+### twist_stamper
+
+Install twist_stamper:
+
+    sudo apt install ros-humble-twist-stamper
+
 <!-- Image References:  -->
 [drive_bot_lidar_gazebo]: resources/Images/drive_bot_lidar_gazebo.png "Gazebo Output"
 [drive_bot_camera_gazebo]: resources/Images/drive_bot_camera_gazebo.png "Gazebo Output"

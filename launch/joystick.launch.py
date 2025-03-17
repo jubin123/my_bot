@@ -34,8 +34,9 @@ def generate_launch_description():
     #         package='twist_stamper',
     #         executable='twist_stamper',
     #         parameters=[{'use_sim_time': use_sim_time}],
-    #         remappings=[('/diff_cont/cmd_vel_unstamped','/diff_cont/cmd_vel')]
-    #      )
+    #         remappings=[('/cmd_vel_in','/diff_cont/cmd_vel_unstamped'),
+    #                     ('/cmd_vel_out','/diff_cont/cmd_vel')]         
+    #         )
 
     return LaunchDescription([
         DeclareLaunchArgument(
