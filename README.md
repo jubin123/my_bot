@@ -91,7 +91,7 @@ If you also want to see visulation in `rviz2`.In new terminal go to `~/dev_ws` a
 
 Robot (In _physical_ or _simulation_ mode) can be controled with either _Controller_  or with _keyboard_ .
 
-- To use _controller_.In terminal run below command
+- To use _controller_.In terminal run below command (note : it is automatly launched in _simulation_ mode ,not required to run seperatly.)
 
         source install/setup.bash
         ros2 launch my_bot joystick.launch.py
