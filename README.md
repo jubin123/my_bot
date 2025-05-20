@@ -209,23 +209,23 @@ Install Nav2:
 
     sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
 
-localization with AMCL:
+Localization with AMCL:
 
 1. seting up map_server (make sure fixframe in rviz is in map and set map topic Durability Policy to Transient Local):
 
-    ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=my_map_save.yaml -p use_sim_time:=true
+        ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=my_map_save.yaml -p use_sim_time:=true
 
 2. lifecycle_bringup of map_server:
 
-    ros2 run nav2_util lifecycle_bringup map_server
+        ros2 run nav2_util lifecycle_bringup map_server
 
 3. seting up Amcl:
 
-    ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
+        ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
 
 4. lifecycle_bringup of amcl:
 
-    ros2 run nav2_util lifecycle_bringup amcl
+        ros2 run nav2_util lifecycle_bringup amcl
 
 Give a initial pose estimate in rviz if required.
 
