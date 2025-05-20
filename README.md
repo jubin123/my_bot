@@ -184,6 +184,52 @@ Install twist_stamper:
 
     sudo apt install ros-humble-twist-stamper
 
+### Setting up SLAM
+
+Install slam-toolbox:
+
+    sudo apt install ros-humble-slam-toolbox
+
+Set up config (can use referrnce copy and mofify it)
+
+    cp /opt/ros/humble/share/slam_toolbox/config/mapper_params_online_async.yaml src/my_bot/config/
+
+Run slam_toolbox (after launching gazebo and add map in rviz to see map generation add slam_toolbox panel to save the map(or can use ros services))
+
+    ros2 launch slam_toolbox online_async_launch.py slam_params_file:=./src/my_bot/config/mapper_params_online_async.yaml use_sim_time:=true
+
+Run the slam_toolbox again after updating the config file with file name to load the map
+
+<!-- Reference-style-image:  -->
+![Rviz2 Output][drive_bot_lidar_camera_slam_toolbox_rviz2]
+
+### Setting up Nav2
+
+Install Nav2:
+
+    sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
+
+localization with AMCL:
+
+1. seting up map_server (make sure fixframe in rviz is in map and set map topic Durability Policy to Transient Local):
+
+    ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=my_map_save.yaml -p use_sim_time:=true
+
+2. lifecycle_bringup of map_server:
+
+    ros2 run nav2_util lifecycle_bringup map_server
+
+3. seting up Amcl:
+
+    ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
+
+4. lifecycle_bringup of amcl:
+
+    ros2 run nav2_util lifecycle_bringup amcl
+
+Give a initial pose estimate in rviz if required.
+
+
 <!-- Image References:  -->
 [drive_bot_lidar_gazebo]: resources/Images/drive_bot_lidar_gazebo.png "Gazebo Output"
 [drive_bot_camera_gazebo]: resources/Images/drive_bot_camera_gazebo.png "Gazebo Output"
@@ -195,5 +241,6 @@ Install twist_stamper:
 [drive_bot_lidar_camera_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2.png "Rviz2 Output"
 [ros2_controller_main_rviz2]: resources/Images/ros2_controller_main_rviz2.png "Rviz2 Output"
 [drive_bot_lidar_depth_camera_rviz2]: resources/Images/drive_bot_lidar_depth_camera_rviz2.png "Rviz2 depth_camera Output"
+[drive_bot_lidar_camera_slam_toolbox_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2_slam_slamtoolbox.png "Rviz2 slam_toolbox Output"
 
 [drive_bot_lidar_depth_camera_requirements]: resources/Images/drive_bot_lidar_depth_camera_requirements.png "drive_bot_lidar_depth_camera_requirements"
