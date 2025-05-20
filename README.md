@@ -178,11 +178,15 @@ Once installed, it can be run with
     
     ros2 run joy_tester test_joy
 
-### twist_stamper
+### twist-stamper and twist-mux
 
 Install twist_stamper:
 
     sudo apt install ros-humble-twist-stamper
+
+Install twist-mux
+
+    sudo apt install ros-humble-twist-mux
 
 ### Setting up SLAM
 
@@ -198,36 +202,42 @@ Run slam_toolbox (after launching gazebo and add map in rviz to see map generati
 
     ros2 launch slam_toolbox online_async_launch.py slam_params_file:=./src/my_bot/config/mapper_params_online_async.yaml use_sim_time:=true
 
-Run the slam_toolbox again after updating the config file with file name to load the map
+Run the slam_toolbox again after updating the config file with file name to load the map.(use `localization_launch.py` insted of `online_async_launch.py` if you requir only localization with out mapping)
 
 <!-- Reference-style-image:  -->
 ![Rviz2 Output][drive_bot_lidar_camera_slam_toolbox_rviz2]
+
+### localization with AMCL:
+
+method 1:
+
+    1. seting up map_server (make sure fixframe in rviz is in map and set map topic Durability Policy to Transient Local):
+
+            ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=my_map_save.yaml -p use_sim_time:=true
+
+    2. lifecycle_bringup of map_server:
+
+            ros2 run nav2_util lifecycle_bringup map_server
+
+    3. seting up Amcl:
+
+            ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
+
+    4. lifecycle_bringup of amcl:
+
+            ros2 run nav2_util lifecycle_bringup amcl
+
+method 2:
+
+    ros2 launch nav2_bringup localization_launch.py map:=./my_map_save.yaml
+
+Give a initial pose estimate in rviz if required.
 
 ### Setting up Nav2
 
 Install Nav2:
 
     sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
-
-Localization with AMCL:
-
-1. seting up map_server (make sure fixframe in rviz is in map and set map topic Durability Policy to Transient Local):
-
-        ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=my_map_save.yaml -p use_sim_time:=true
-
-2. lifecycle_bringup of map_server:
-
-        ros2 run nav2_util lifecycle_bringup map_server
-
-3. seting up Amcl:
-
-        ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
-
-4. lifecycle_bringup of amcl:
-
-        ros2 run nav2_util lifecycle_bringup amcl
-
-Give a initial pose estimate in rviz if required.
 
 
 <!-- Image References:  -->
