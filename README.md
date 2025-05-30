@@ -205,7 +205,7 @@ Run slam_toolbox (after launching gazebo and add map in rviz to see map generati
 Run the slam_toolbox again after updating the config file with file name to load the map.(use `localization_launch.py` insted of `online_async_launch.py` if you requir only localization with out mapping)
 
 <!-- Reference-style-image:  -->
-![Rviz2 Output][drive_bot_lidar_camera_slam_toolbox_rviz2]
+![Rviz2 Output][drive_bot_lidar_camera_slam_toolbox_map_rviz2]
 
 ### localization with AMCL:
 
@@ -229,9 +229,12 @@ method 1:
 
 method 2:
 
-    ros2 launch nav2_bringup localization_launch.py map:=./my_map_save.yaml
+    ros2 launch nav2_bringup localization_launch.py map:=./my_map_save.yaml use_sim_time:=true
 
 Give a initial pose estimate in rviz if required.
+
+<!-- Reference-style-image:  -->
+![Rviz2 Output][drive_bot_lidar_camera_amcl_map_rviz2]
 
 ### Setting up Nav2
 
@@ -239,11 +242,24 @@ Install Nav2:
 
     sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
 
+1. Running Nav2 with slam_toolbox:
+
+        ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true
+
+<!-- Reference-style-image:  -->
+![Rviz2 Output][drive_bot_lidar_camera_slam_toolbox_nav2_rviz2]
+
+2. Running Nav2 with AMCL:
+
+        ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
+
+<!-- Reference-style-image:  -->
+![Rviz2 Output][drive_bot_lidar_camera_amcl_nav2_rviz2]
 
 <!-- Image References:  -->
 [drive_bot_lidar_gazebo]: resources/Images/drive_bot_lidar_gazebo.png "Gazebo Output"
 [drive_bot_camera_gazebo]: resources/Images/drive_bot_camera_gazebo.png "Gazebo Output"
-[drive_bot_lidar_camera_gazebo]: resources/Images/drive_bot_lidar_camera_gazebo.png "Gazebo Output"
+[drive_bot_lidar_camera_gazebo]: resources/Images/drive_bot_lidar_camera_gazebo.png "Gazebo Output"sss
 [ros2_controller_main_gazebo]: resources/Images/ros2_controller_main_gazebo.png "Gazebo Output"
 
 [drive_bot_lidar_rviz2]: resources/Images/drive_bot_lidar_rviz2.png "Rviz2 Output"
@@ -251,6 +267,10 @@ Install Nav2:
 [drive_bot_lidar_camera_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2.png "Rviz2 Output"
 [ros2_controller_main_rviz2]: resources/Images/ros2_controller_main_rviz2.png "Rviz2 Output"
 [drive_bot_lidar_depth_camera_rviz2]: resources/Images/drive_bot_lidar_depth_camera_rviz2.png "Rviz2 depth_camera Output"
-[drive_bot_lidar_camera_slam_toolbox_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2_slam_slamtoolbox.png "Rviz2 slam_toolbox Output"
+[drive_bot_lidar_camera_slam_toolbox_map_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2_map_slam_toolbox.png "Rviz2 map slam_toolbox Output"
+[drive_bot_lidar_camera_slam_toolbox_nav2_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2_nav2_slam_toolbox.png "Rviz2 nav2 slam_toolbox Output"
+[drive_bot_lidar_camera_amcl_map_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2_map_amcl.png "Rviz2 map amcl Output"
+[drive_bot_lidar_camera_amcl_nav2_rviz2]: resources/Images/drive_bot_lidar_camera_rviz2_nav2_amcl.png "Rviz2 nav2 amcl Output"
+
 
 [drive_bot_lidar_depth_camera_requirements]: resources/Images/drive_bot_lidar_depth_camera_requirements.png "drive_bot_lidar_depth_camera_requirements"
