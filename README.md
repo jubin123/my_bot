@@ -202,7 +202,11 @@ Run slam_toolbox (after launching gazebo and add map in rviz to see map generati
 
     ros2 launch slam_toolbox online_async_launch.py slam_params_file:=./src/my_bot/config/mapper_params_online_async.yaml use_sim_time:=true
 
-Run the slam_toolbox again after updating the config file with file name to load the map.(use `localization_launch.py` insted of `online_async_launch.py` if you requir only localization with out mapping)
+or
+
+    ros2 launch my_bot online_async_launch.py slam_params_file:=./src/my_bot/config/mapper_params_online_async.yaml use_sim_time:=true
+
+Run the slam_toolbox again after updating the config file with file name to load the map.(use `localization_launch.py` insted of `online_async_launch.py` if you requir only localization with out mapping(cannot use `localization_launch.py` with local launch file as file with same name exist for amcl.))
 
 <!-- Reference-style-image:  -->
 ![Rviz2 Output][drive_bot_lidar_camera_slam_toolbox_map_rviz2]
@@ -231,6 +235,10 @@ method 2:
 
     ros2 launch nav2_bringup localization_launch.py map:=./my_map_save.yaml use_sim_time:=true
 
+or
+
+    ros2 launch my_bot localization_launch.py map:=./my_map_save.yaml use_sim_time:=true
+
 Give a initial pose estimate in rviz if required.
 
 <!-- Reference-style-image:  -->
@@ -246,12 +254,22 @@ Install Nav2:
 
         ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true
 
+or
+
+        ros2 launch my_bot navigation_launch.py use_sim_time:=true
+
+
 <!-- Reference-style-image:  -->
 ![Rviz2 Output][drive_bot_lidar_camera_slam_toolbox_nav2_rviz2]
 
 2. Running Nav2 with AMCL:
 
         ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
+
+or
+
+        ros2 launch my_bot navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
+
 
 <!-- Reference-style-image:  -->
 ![Rviz2 Output][drive_bot_lidar_camera_amcl_nav2_rviz2]
