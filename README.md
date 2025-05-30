@@ -204,7 +204,7 @@ Run slam_toolbox (after launching gazebo and add map in rviz to see map generati
 
 or
 
-    ros2 launch my_bot online_async_launch.py slam_params_file:=./src/my_bot/config/mapper_params_online_async.yaml use_sim_time:=true
+    ros2 launch my_bot online_async_launch.py use_sim_time:=true
 
 Run the slam_toolbox again after updating the config file with file name to load the map.(use `localization_launch.py` insted of `online_async_launch.py` if you requir only localization with out mapping(cannot use `localization_launch.py` with local launch file as file with same name exist for amcl.))
 
@@ -254,7 +254,7 @@ Install Nav2:
 
         ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true
 
-or
+    or
 
         ros2 launch my_bot navigation_launch.py use_sim_time:=true
 
@@ -266,7 +266,7 @@ or
 
         ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
 
-or
+    or
 
         ros2 launch my_bot navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
 
